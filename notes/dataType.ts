@@ -201,6 +201,7 @@ let sunFunc: (x: number, y:number)=>number
 
 // 使用 interface 定义函数
 interface SearchFunc {
+  // ()里的是 input, 后面的是 output
   (source: string, keyword: string): boolean;
 }
 let aSearchFunc: SearchFunc;
