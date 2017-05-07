@@ -1,43 +1,34 @@
-//  files options
-// {
-//     "compilerOptions": {
-//         "module": "commonjs",
-//         "noImplicitAny": true,
-//         "removeComments": true,
-//         "preserveConstEnums": true,
-//         "sourceMap": true
-//     },
-//     "files": [
-//         "core.ts",
-//         "sys.ts",
-//         "types.ts",
-//         "scanner.ts",
-//         "parser.ts",
-//         "utilities.ts",
-//         "binder.ts",
-//         "checker.ts",
-//         "emitter.ts",
-//         "program.ts",
-//         "commandLineParser.ts",
-//         "tsc.ts",
-//         "diagnosticInformationMap.generated.ts"
-//     ]
-// }
-
 {
     "compilerOptions": {
-        "module": "system",
+        "outDir": "build/dist",
+        "module": "commonjs",
+        "target": "es5",
+        "lib": ["es6", "dom"],
+        "sourceMap": true,
+        "allowJs": true,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
         "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "outFile": "built/tsc.js",
-        "sourceMap": true
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true
     },
-    "include": [
-        "*"
-    ],
     "exclude": [
         "node_modules",
-        "**/*.spec.ts"
+        "build",
+        "scripts",
+        "acceptance-tests",
+        "webpack",
+        "jest",
+        "src/setupTests.ts",
+        "examples",
+        "notes"
+    ],
+    "types": [
+        "typePatches"
     ]
 }
