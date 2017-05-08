@@ -11,7 +11,8 @@
     "@types/react": "^15.0.24",
     "@types/react-dom": "^15.5.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "spectre.css": "^0.2.14"
   },
   "scripts": {
     "start": "react-scripts-ts start",
