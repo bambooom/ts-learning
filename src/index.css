@@ -36,3 +36,23 @@ body {
     position: relative;
     z-index: 300;
 }
+
+.columns {
+    padding: 7rem 1rem 5rem 1rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.grid-footer {
+    color: #acb3c2;
+    margin-top: 0.5rem;
+}
+
+.grid-footer p {
+    margin: 0 0 1rem;
+}
