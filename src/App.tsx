@@ -1,6 +1,10 @@
 import * as React from 'react';
 import AppBar from './components/AppBar';
 import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
+import PriceBoard from './components/PriceBoard/index';
+// why cannot import from './components/PriceBoard' directly 
+// implicit import index.tsx file;
 
 class App extends React.Component<{}, null> {
   render() {
@@ -9,7 +13,13 @@ class App extends React.Component<{}, null> {
         <AppBar />
         <section className="container grid-960">
           <section className="columns">
-            <p>hello world</p>
+            <div className="column col-xs-12 col-md-6">
+              <SearchBar />
+              <PriceBoard />
+            </div>
+            <div className="column col-xs-12 col-md-6">
+              <p>World</p>
+            </div>
           </section>
         </section>
         <Footer />

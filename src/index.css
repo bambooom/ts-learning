@@ -56,3 +56,7 @@ footer {
 .grid-footer p {
     margin: 0 0 1rem;
 }
+
+.search-bar-container {
+    width: 80%;
+}
