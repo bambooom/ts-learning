@@ -54,3 +54,23 @@ $ create-react-app my-app --scripts-version=react-scripts-ts
 - 且已经启用了 `yarn` 来管理包
 - 预设好了 `tsconfig.json` 和 `tslint.json` 配置文件
 - 和普通一样使用 `npm start` 即可在 `http://localhost:3000/` 中看到 demo 页面
+
+#### 17.5.13 deploy
+
+组件没有完成...
+欢迎随时到 https://bambooom.github.io/ts-learning/ 这里围观进展
+
+
+deploy 方法:
+- `package.json` 中添加 `"homepage": "https://bambooom.github.io/ts-learning/",`
+- `yarn add --dev gh-pages`
+- `package.json` 中添加:
+
+    // ...
+    "scripts": {
+      // ...
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build"
+    }
+
+- `yarn run deploy`
