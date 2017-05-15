@@ -60,3 +60,7 @@ footer {
 .search-bar-container {
     width: 80%;
 }
+
+.card .card-title {
+    text-align: center;
+}
