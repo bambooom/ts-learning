@@ -1,5 +1,6 @@
 import * as React from 'react';
 import DealList from './DealList';
+import AskBid from './AskBid';
 
 class PriceBoard extends React.Component<{}, null> {
     render() {
@@ -11,7 +12,7 @@ class PriceBoard extends React.Component<{}, null> {
         ];
         return (
             <div>
-                PriceBoard
+                <AskBid />
                 <DealList dataSource={dataSource} />
             </div>
         );

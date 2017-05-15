@@ -37,7 +37,7 @@ body {
     z-index: 300;
 }
 
-.columns {
+.content-container {
     padding: 7rem 1rem 5rem 1rem;
 }
 
@@ -63,4 +63,12 @@ footer {
 
 .card .card-title {
     text-align: center;
+}
+
+.ask-bid.ask {
+    color: red;
+}
+
+.ask-bid.bid {
+    color: green;
 }

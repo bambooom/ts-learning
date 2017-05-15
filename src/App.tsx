@@ -12,7 +12,7 @@ class App extends React.Component<{}, null> {
       <div>
         <AppBar />
         <section className="container grid-960">
-          <section className="columns">
+          <section className="columns content-container">
             <div className="column col-xs-12 col-md-6">
               <SearchBar />
               <PriceBoard />
