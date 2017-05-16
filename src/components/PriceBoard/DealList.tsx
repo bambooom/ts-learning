@@ -22,7 +22,7 @@ export default class DealList extends React.Component<Props, object> {
             <div className="card">
                 <div className="card-header">
                     <div className="card-title">
-                        成交记录
+                        逐笔成交记录
                     </div>
                 </div>
                 <table className="table table-striped table-hover">

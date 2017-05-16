@@ -65,10 +65,26 @@ footer {
     text-align: center;
 }
 
+.card-body.ask-bid {
+    padding: 0.5rem 0;
+}
+
+.table td {
+    padding: 0.5rem 1rem;
+}
+
+td.brokers::before {
+    content: "(";
+}
+
+td.brokers::after {
+    content: ")";
+}
+
 .ask-bid.ask {
-    color: red;
+    color: #32b643;
 }
 
 .ask-bid.bid {
-    color: green;
+    color: #e85600;
 }
