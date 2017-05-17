@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DealList from './DealList';
 import AskBid from './AskBid';
+import StockInfo from './StockInfo';
 
 class PriceBoard extends React.Component<{}, null> {
     render() {
@@ -24,6 +25,7 @@ class PriceBoard extends React.Component<{}, null> {
             { price: 232.4, lots: 7, brokers: 2 }];
         return (
             <div>
+                <StockInfo name="腾讯控股" code="00700.HK" current={231.8} />
                 <AskBid asks={askpricemock} bids={bidpricemock} />
                 <DealList dataSource={dataSource} />
             </div>

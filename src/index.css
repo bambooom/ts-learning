@@ -61,12 +61,18 @@ footer {
     width: 80%;
 }
 
-.card .card-title {
+.deal-list .card-title {
     text-align: center;
+    font-size: 1.5rem;
+    color: #727e96;
 }
 
 .card-body.ask-bid {
     padding: 0.5rem 0;
+}
+
+.table th {
+    padding: 0.5rem 1rem;
 }
 
 .table td {
@@ -87,4 +93,8 @@ td.brokers::after {
 
 .ask-bid.bid {
     color: #e85600;
+}
+
+.stock-info .card-title {
+    color: #5764c6;
 }

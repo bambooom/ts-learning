@@ -19,7 +19,7 @@ export default class DealList extends React.Component<Props, object> {
             </tr>
         ));
         return (
-            <div className="card">
+            <div className="card deal-list">
                 <div className="card-header">
                     <div className="card-title">
                         逐笔成交记录
