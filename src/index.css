@@ -98,3 +98,11 @@ td.brokers::after {
 .stock-info .card-title {
     color: #5764c6;
 }
+
+.security {
+    overflow-x: scroll;
+}
+
+.security table {
+    min-width: 600px;
+}
