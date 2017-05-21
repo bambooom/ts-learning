@@ -114,3 +114,11 @@ td.brokers::after {
 .security table {
     min-width: 600px;
 }
+
+.trading-sum {
+    padding: .5rem 0;
+}
+
+.btn {
+    margin: 0.5rem;
+}

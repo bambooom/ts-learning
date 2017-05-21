@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 // import SearchBar from './components/SearchBar';
 import PriceBoard from './components/PriceBoard/index';
 import HoldingPos from './components/HoldingPos';
+import Trading from './components/Trading';
 // why cannot import from './components/PriceBoard' directly 
 // implicit import index.tsx file;
 
@@ -19,6 +20,7 @@ class App extends React.Component<{}, null> {
             </div>
             <div className="column col-sm-12 col-6">
               <HoldingPos />
+              <Trading />
             </div>
           </section>
         </section>
