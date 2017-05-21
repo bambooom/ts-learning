@@ -42,6 +42,7 @@ $ tsc hello.ts
 
 ## demo
 - 目标: trading demo
+- url: https://bambooom.github.io/ts-learning/
 
 ### 进展
 #### 17.5.7 init demo
@@ -57,20 +58,23 @@ $ create-react-app my-app --scripts-version=react-scripts-ts
 
 #### 17.5.13 deploy
 
-组件没有完成...
-欢迎随时到 https://bambooom.github.io/ts-learning/ 这里围观进展
-
-
 deploy 方法:
 - `package.json` 中添加 `"homepage": "https://bambooom.github.io/ts-learning/",`
 - `yarn add --dev gh-pages`
 - `package.json` 中添加:
-
+```json
     // ...
     "scripts": {
       // ...
       "predeploy": "npm run build",
       "deploy": "gh-pages -d build"
     }
-
+```
 - `yarn run deploy`
+
+#### 17.5.21 页面基本完成
+- 基本页面结构/样式确定
+- TODO:
+  - [ ] 从某个远端获取 init 数据 (使用 [jsonbin](https://jsonbin.org/) 模拟)
+  - [ ] 设定定时任务, 任意更新股价信息等
+  - [ ] 页面数据处理逻辑, 即基本买卖功能实现
