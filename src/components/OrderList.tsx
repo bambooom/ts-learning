@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface order {
+interface Order {
     status: string;
     direction: string;
     code: string;
@@ -12,10 +12,10 @@ interface order {
 }
 
 export interface Props {
-    orderList?: order[];
+    orderList?: Order[];
 }
 
-export default class TradingHistory extends React.Component<Props, object> {
+export default class OrderList extends React.Component<Props, object> {
     render() {
         const { orderList } = this.props;
         const rows = orderList && orderList.length > 0 ?
@@ -32,13 +32,13 @@ export default class TradingHistory extends React.Component<Props, object> {
                 </tr>
             )) : [];
         return (
-            <div className="card history">
+            <div className="card order">
                 <div className="card-header">
                     <div className="card-title">
                         交易记录
                     </div>
                 </div>
-                <div className="history-table">
+                <div className="order-table">
                     <table className="table table-striped table-hover">
                         <thead>
                             <tr>

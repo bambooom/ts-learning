@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import PriceBoard from './components/PriceBoard/index';
 import HoldingPos from './components/HoldingPos';
 import Trading from './components/Trading';
-import TradingHistory from './components/TradingHistory';
+import OrderList from './components/OrderList';
 // why cannot import from './components/PriceBoard' directly 
 // implicit import index.tsx file;
 
@@ -22,7 +22,7 @@ class App extends React.Component<{}, null> {
             <div className="column col-sm-12 col-6">
               <HoldingPos />
               <Trading />
-              <TradingHistory />
+              <OrderList />
             </div>
           </section>
         </section>

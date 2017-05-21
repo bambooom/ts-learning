@@ -123,11 +123,11 @@ td.brokers::after {
     margin: 0.5rem;
 }
 
-.history-table {
+.order-table {
     overflow-x: scroll;
     padding-bottom: 10px;
 }
 
-.history table {
+.order table {
     min-width: 800px;
 }
