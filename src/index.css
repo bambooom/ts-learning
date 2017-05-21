@@ -99,8 +99,16 @@ td.brokers::after {
     color: #5764c6;
 }
 
+.capital {
+    border: none;
+}
+
 .security {
     overflow-x: scroll;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding-bottom: 10px;
 }
 
 .security table {
