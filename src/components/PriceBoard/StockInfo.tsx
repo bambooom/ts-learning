@@ -37,7 +37,7 @@ export default class StockInfo extends React.Component<Props, object> {
 
 function isTradingTime(now: Date): boolean {
     const day: number = now.getDay();
-    if (day === 6 || day === 7) {
+    if (day === 0 || day === 6) {
         return false;
     }
     const hour: number = now.getHours();
