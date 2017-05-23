@@ -24,6 +24,7 @@ class App extends React.Component<{}, object> {
   };
 
   componentDidMount() {
+    // fetch: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
     fetch(initDataURL)
       .then(res => res.json())
       .then(res => {
@@ -49,7 +50,9 @@ class App extends React.Component<{}, object> {
               />
             </div>
             <div className="column col-sm-12 col-6">
-              <HoldingPos />
+              <HoldingPos
+                stockInfo={data ? data.stockInfo : {}}
+                asset={data ? data.asset : {}} />
               <Trading />
               <OrderList />
             </div>
