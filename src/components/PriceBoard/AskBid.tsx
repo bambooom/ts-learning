@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-interface PriceRow {
-    price: number;
-    lots: number;
-    brokers: number;
+export interface PriceRow {
+    price: number | null;
+    lots: number | null;
+    brokers: number | null;
 }
 
 export interface Props {

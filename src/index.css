@@ -131,3 +131,7 @@ td.brokers::after {
 .order table {
     min-width: 800px;
 }
+
+.stock-info .label {
+    margin-left: 15px;
+}

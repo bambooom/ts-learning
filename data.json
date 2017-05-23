@@ -1,0 +1,84 @@
+{
+    "stockInfo": {
+        "name": "腾讯控股",
+        "code": "00700.HK",
+        "current": 231.8
+    },
+    "askPrice5": [{
+            "price": 231.8,
+            "lots": 1,
+            "brokers": 3
+        },
+        {
+            "price": 231.6,
+            "lots": 2,
+            "brokers": 1
+        },
+        {
+            "price": 231.4,
+            "lots": 5,
+            "brokers": 2
+        },
+        {
+            "price": 231.2,
+            "lots": 4,
+            "brokers": 1
+        },
+        {
+            "price": 231.0,
+            "lots": 8,
+            "brokers": 3
+        }
+    ],
+    "bidPrice5": [{
+            "price": 232.0,
+            "lots": 5,
+            "brokers": 3
+        },
+        {
+            "price": 232.2,
+            "lots": 3,
+            "brokers": 3
+        },
+        {
+            "price": 232.4,
+            "lots": 2,
+            "brokers": 1
+        },
+        {
+            "price": 232.6,
+            "lots": 4,
+            "brokers": 1
+        },
+        {
+            "price": 233.0,
+            "lots": 7,
+            "brokers": 2
+        }
+    ],
+    "dealList": [{
+            "time": "09:41",
+            "dealPrice": 231.4,
+            "dealQuantity": 200
+        },
+        {
+            "time": "09:45",
+            "dealPrice": 231.5,
+            "dealQuantity": 300
+        },
+        {
+            "time": "09:47",
+            "dealPrice": 231.6,
+            "dealQuantity": 100
+        }
+    ],
+    "asset": {
+        "cash": 184720.4,
+        "security": [{
+            "code": "00700.HK",
+            "name": "腾讯控股",
+            "quantity": 100,
+            "avgCostPrice": 225.4
+        }]
+    }
+}

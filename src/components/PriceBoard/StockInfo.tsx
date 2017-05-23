@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export interface Props {
-    code?: string;
-    name?: string;
-    current?: number;
+    code: string | null;
+    name: string | null;
+    current: number | null;
 }
 
 export default class StockInfo extends React.Component<Props, object> {
@@ -16,14 +16,18 @@ export default class StockInfo extends React.Component<Props, object> {
         } else {
             label = <span className="label">已结束交易</span>;
         }
+        const { name, code, current } = this.props;
+        const displayName: string = name ? name : '';
+        const displayCode: string = code ? code : '';
+        const displayCurrent: string = (current ? current : 0).toFixed(2);
         return (
             <div className="card stock-info">
                 <div className="card-header">
                     <div className="card-title col-oneline columns">
                         <div className="col-9">
-                            {`${this.props.name} (${this.props.code})`}
+                            {`${displayName} (${displayCode})`}
                         </div>
-                        <div className="col-3">{this.props.current}</div>
+                        <div className="col-3">{displayCurrent}</div>
                     </div>
                     <div className="card-subtitle">
                         {time}

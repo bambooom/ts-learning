@@ -1,33 +1,30 @@
 import * as React from 'react';
-import DealList from './DealList';
-import AskBid from './AskBid';
+import DealList, { DealRow } from './DealList';
+import AskBid, { PriceRow } from './AskBid';
 import StockInfo from './StockInfo';
 
-class PriceBoard extends React.Component<{}, null> {
+export interface Props {
+    stockInfo: {
+        code: string | null;
+        name: string | null;
+        current: number | null
+    };
+    askPrice5: PriceRow[];
+    bidPrice5: PriceRow[];
+    dealList: DealRow[];
+}
+
+class PriceBoard extends React.Component<Props, object> {
     render() {
-        // 假数据
-        const dataSource = [
-            { time: '09:41', dealPrice: 231.4, dealQuantity: 200 },
-            { time: '09:45', dealPrice: 231.5, dealQuantity: 300 },
-            { time: '09:47', dealPrice: 231.6, dealQuantity: 100 },
-        ];
-        const askpricemock = [
-            { price: 231.8, lots: 1, brokers: 3 },
-            { price: 231.7, lots: 2, brokers: 1 },
-            { price: 231.6, lots: 5, brokers: 2 },
-            { price: 231.5, lots: 4, brokers: 1 },
-            { price: 231.4, lots: 8, brokers: 3 }];
-        const bidpricemock = [
-            { price: 231.9, lots: 5, brokers: 3 },
-            { price: 232.0, lots: 3, brokers: 1 },
-            { price: 232.2, lots: 2, brokers: 2 },
-            { price: 232.3, lots: 4, brokers: 1 },
-            { price: 232.4, lots: 7, brokers: 2 }];
+        const { stockInfo, askPrice5, bidPrice5, dealList } = this.props;
         return (
             <div>
-                <StockInfo name="腾讯控股" code="00700.HK" current={231.8} />
-                <AskBid asks={askpricemock} bids={bidpricemock} />
-                <DealList dataSource={dataSource} />
+                <StockInfo
+                    name={stockInfo.name}
+                    code={stockInfo.code}
+                    current={stockInfo.current} />
+                <AskBid asks={askPrice5} bids={bidPrice5} />
+                <DealList dealList={dealList} />
             </div>
         );
     }
