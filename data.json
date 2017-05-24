@@ -56,20 +56,33 @@
             "brokers": 2
         }
     ],
-    "dealList": [{
-            "time": "09:41",
-            "dealPrice": 231.4,
+    "transactionRecord": [{
+            "dealPrice": 231.8,
             "dealQuantity": 200
         },
         {
-            "time": "09:45",
-            "dealPrice": 231.5,
+            "dealPrice": 231.6,
             "dealQuantity": 300
         },
         {
-            "time": "09:47",
-            "dealPrice": 231.6,
+            "dealPrice": 231.4,
             "dealQuantity": 100
+        },
+        {
+            "dealPrice": 231.2,
+            "dealQuantity": 400
+        },
+        {
+            "dealPrice": 231,
+            "dealQuantity": 100
+        },
+        {
+            "dealPrice": 231.2,
+            "dealQuantity": 400
+        },
+        {
+            "dealPrice": 231.2,
+            "dealQuantity": 200
         }
     ],
     "asset": {
