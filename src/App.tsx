@@ -1,3 +1,5 @@
+/// <reference path="./interface.d.ts"/>
+
 import * as React from 'react';
 import AppBar from './components/AppBar';
 import Footer from './components/Footer';
@@ -46,7 +48,7 @@ class App extends React.Component<{}, object> {
                 stockInfo={data ? data.stockInfo : {}}
                 askPrice5={data ? data.askPrice5 : []}
                 bidPrice5={data ? data.bidPrice5 : []}
-                dealList={data ? data.dealList : []}
+                transactionRecord={data ? data.transactionRecord : []}
               />
             </div>
             <div className="column col-sm-12 col-6">

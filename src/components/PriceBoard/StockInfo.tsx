@@ -1,12 +1,6 @@
 import * as React from 'react';
 
-export interface Props {
-    code: string | null;
-    name: string | null;
-    current: number | null;
-}
-
-export default class StockInfo extends React.Component<Props, object> {
+export default class StockInfo extends React.Component<StockBaseInfo, object> {
     render() {
         const now = new Date();
         const time = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;

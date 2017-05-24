@@ -1,11 +1,5 @@
 import * as React from 'react';
 
-export interface PriceRow {
-    price: number | null;
-    lots: number | null;
-    brokers: number | null;
-}
-
 export interface Props {
     asks: PriceRow[];
     bids: PriceRow[];
@@ -20,13 +14,17 @@ export default class AskBid extends React.Component<Props, object> {
         } else {
             className += 'bid';
         }
-        const rows = data.map(ds => (
-            <tr key={Math.random()}>
-                <td>{ds.price}</td>
-                <td>{ds.lots}k</td>
-                <td className="brokers">{ds.brokers}</td>
-            </tr>
-        ));
+        const rows = data.map(ds => {
+            const price = ds.price ? ds.price.toFixed(2) : '-';
+            const quantity = ds.lots ? ds.lots * 100 : 0;
+            return (
+                <tr key={Math.random()}>
+                    <td>{price}</td>
+                    <td>{quantity}</td>
+                    <td className="brokers">{ds.brokers}</td>
+                </tr>
+            );
+        });
         return (
             <div className="card col-6">
                 <div className="card-subtitle">

@@ -1,19 +1,13 @@
 import * as React from 'react';
 
-export interface DealRow {
-    time: string | null;
-    dealPrice: number | null;
-    dealQuantity: number | null;
-}
-
 export interface Props {
-    dealList: DealRow[];
+    transactionRecord: Transaction[];
 }
 
-export default class DealList extends React.Component<Props, object> {
+export default class TransactionRecord extends React.Component<Props, object> {
     render() {
-        const { dealList } = this.props;
-        const rows = dealList.map(ds => (
+        const { transactionRecord } = this.props;
+        const rows = transactionRecord.map(ds => (
             <tr key={Math.random()}>
                 <td>{ds.time}</td>
                 <td>{ds.dealPrice}</td>
