@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { lastTradingTime } from '../../util';
 
 export interface Props {
     transactionRecord: Transaction[];
@@ -7,13 +8,18 @@ export interface Props {
 export default class TransactionRecord extends React.Component<Props, object> {
     render() {
         const { transactionRecord } = this.props;
-        const rows = transactionRecord.map(ds => (
-            <tr key={Math.random()}>
-                <td>{ds.time}</td>
-                <td>{ds.dealPrice}</td>
-                <td>{ds.dealQuantity}</td>
-            </tr>
-        ));
+        const now = new Date();
+        let lastTrading: Date = lastTradingTime(now);
+        const rows = transactionRecord.map(ds => {
+            lastTrading.setSeconds(lastTrading.getSeconds() - 1);
+            return (
+                <tr key={Math.random()}>
+                    <td>{lastTrading.toLocaleTimeString()}</td>
+                    <td>{ds.dealPrice}</td>
+                    <td>{ds.dealQuantity}</td>
+                </tr>
+            );
+        });
         return (
             <div className="card deal-list">
                 <div className="card-header">

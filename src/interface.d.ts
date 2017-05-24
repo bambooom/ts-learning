@@ -29,7 +29,7 @@ interface PriceRow {
 }
 // 交易记录
 interface Transaction {
-    time: Date; // 成交时间
+    time?: Date; // 成交时间
     dealPrice: number; // 成交价格
     dealQuantity: number; // 成交数量
 }

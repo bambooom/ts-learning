@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isTradingTime } from '../../util';
 
 export default class StockInfo extends React.Component<StockBaseInfo, object> {
     render() {
@@ -31,16 +32,4 @@ export default class StockInfo extends React.Component<StockBaseInfo, object> {
             </div>
         );
     }
-}
-
-function isTradingTime(now: Date): boolean {
-    const day: number = now.getDay();
-    if (day === 0 || day === 6) {
-        return false;
-    }
-    const hour: number = now.getHours();
-    if (hour < 9 || hour > 16 || hour === 12) {
-        return false;
-    }
-    return true;
 }
