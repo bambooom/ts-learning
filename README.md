@@ -75,6 +75,14 @@ deploy 方法:
 #### 17.5.21 页面基本完成
 - 基本页面结构/样式确定
 - TODO:
-  - [ ] 从某个远端获取 init 数据 (使用 [jsonbin](https://jsonbin.org/) 模拟)
+  - [x] 从某个远端获取 init 数据 (使用 [jsonbin](https://jsonbin.org/) 模拟)
   - [ ] 设定定时任务, 任意更新股价信息等
   - [ ] 页面数据处理逻辑, 即基本买卖功能实现
+
+#### 17.5.23 data from remote
+- 使用 [jsonbin](https://jsonbin.org/) 简单存储 `data.json` 中数据作为初始数据
+  - api: https://jsonbin.org/bambooom/ts-trading-demo-data
+- App 中在 `ComponentDidMount` 时通过 `fetch` 获取 remote data 并存入 state
+  - 参考: 
+    * [使用 Fetch - Web API 接口 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
+    * [Fetch API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
