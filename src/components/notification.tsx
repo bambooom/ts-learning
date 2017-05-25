@@ -27,6 +27,7 @@ class Notification {
         this.notificationSystem = notificationSystem;
     }
 
+    // 直接使用前面的 const NotiLevel 会将 level 断言为 string, 与实际定义中的 union type 不符合
     add(msg: string,
         level: 'success' | 'error',
         autoDismiss: number = 5,

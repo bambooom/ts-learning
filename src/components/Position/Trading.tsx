@@ -13,24 +13,46 @@ export default class Trading extends React.Component<Props, object> {
         quantity: 0,
     };
 
-    onSubmitBuy = () => {
+    validate = (): string => {
         const { price, quantity, code } = this.state;
         if (!code || !price || !quantity) {
-            showError('表单没填完整呐!');
-            return;
+            return '表单没填完整呐!';
         }
-        const { cash } = this.props.asset;
         const { current } = this.props.stockInfo;
         if (Math.abs(current - price) > 0.2 * 10) {
-            showError('不能超过现价 10 个价位呐!(此处一个价位 0.2)');
+            return '不能超过现价 10 个价位呐! (此处一个价位 0.2)';
+        }
+
+        return '';
+    }
+
+    onSubmitBuy = () => {
+        const invalidInput = this.validate();
+        if (invalidInput) {
+            showError(invalidInput);
             return;
         }
+        const { price, quantity } = this.state;
+        const { cash } = this.props.asset;
         const need = price * quantity;
         if (need > cash) {
             showError('不够钱买呐! 减少数量或者降低价格吧~');
             return;
         }
+    }
 
+    onSubmitSell = () => {
+        const invalidInput = this.validate();
+        if (invalidInput) {
+            showError(invalidInput);
+            return;
+        }
+        const { quantity } = this.state;
+        const quantityHolding = this.props.asset.security[0].quantity;
+        if (quantity > quantityHolding) {
+            showError('你持有的股数不够呐!');
+            return;
+        }
     }
 
     render() {
@@ -94,7 +116,9 @@ export default class Trading extends React.Component<Props, object> {
                                 <button
                                     className="btn btn-primary" type="button"
                                     onClick={this.onSubmitBuy}>买入</button>
-                                <button className="btn btn-primary" type="button">卖出</button>
+                                <button
+                                    className="btn btn-primary" type="button"
+                                    onClick={this.onSubmitSell}>卖出</button>
                                 <button className="btn btn-link" type="reset">取消</button>
                             </div>
                         </div>

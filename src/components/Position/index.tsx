@@ -13,6 +13,7 @@ export interface Props {
 }
 
 export default class Position extends React.Component<Props, object> {
+
     render() {
         const { asset, stockInfo } = this.props;
         return (
