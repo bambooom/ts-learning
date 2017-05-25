@@ -1,34 +1,18 @@
 import * as React from 'react';
 
-interface Holding {
-    code: string;
-    name: string;
-    quantity: number; // 持有股数
-    avgCostPrice: number; // 成本价
-}
-
-interface Asset {
-    cash: number | null;
-    security: Holding[];
-}
-
 export interface Props {
     asset: Asset;
-    stockInfo: {
-        code: string | null;
-        name: string | null;
-        current: number | null;
-    };
+    stockInfo: StockBaseInfo;
 }
 
-function sumSecuritiesMarketValue(securities: Holding[], current: number | null): number {
+function sumSecuritiesMarketValue(securities: HoldingSecurity[], current: number | null): number {
     if (!securities || !current || securities.length === 0) {
         return 0;
     }
     return securities.reduce((pv, cv) => pv + current * cv.quantity, 0);
 }
 
-export default class HoldingPos extends React.Component<Props, object> {
+export default class AssetSum extends React.Component<Props, object> {
     renderCapitalSection() {
         const { asset, stockInfo } = this.props;
         const cash = asset.cash ? asset.cash : 0;

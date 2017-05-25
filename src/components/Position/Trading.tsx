@@ -1,16 +1,40 @@
 import * as React from 'react';
+import { showError } from '../notification';
 
 export interface Props {
-
+    asset: Asset;
+    stockInfo: StockBaseInfo;
 }
 
 export default class Trading extends React.Component<Props, object> {
     state = {
+        code: null,
         price: 0,
         quantity: 0,
     };
 
+    onSubmitBuy = () => {
+        const { price, quantity, code } = this.state;
+        if (!code || !price || !quantity) {
+            showError('表单没填完整呐!');
+            return;
+        }
+        const { cash } = this.props.asset;
+        const { current } = this.props.stockInfo;
+        if (Math.abs(current - price) > 0.2 * 10) {
+            showError('不能超过现价 10 个价位呐!(此处一个价位 0.2)');
+            return;
+        }
+        const need = price * quantity;
+        if (need > cash) {
+            showError('不够钱买呐! 减少数量或者降低价格或者再存点钱吧~');
+            return;
+        }
+
+    }
+
     render() {
+
         return (
             <div className="card trading">
                 <div className="card-header">
@@ -19,13 +43,14 @@ export default class Trading extends React.Component<Props, object> {
                     </div>
                 </div>
                 <div className="card-body">
-                    <form className="form-horizontal">
+                    <form className="form-horizontal" id="trading-action">
                         <div className="form-group">
                             <div className="col-3">
                                 <label className="form-label" htmlFor="stock-code">代码</label>
                             </div>
                             <div className="col-9">
-                                <select className="form-select" id="stock-code">
+                                <select className="form-select" id="stock-code"
+                                    onChange={(e) => this.setState({ code: e.target.value })}>
                                     <option>选择股票代码</option>
                                     <option value="700">00700.HK 腾讯控股</option>
                                 </select>
@@ -51,7 +76,7 @@ export default class Trading extends React.Component<Props, object> {
                                     <input
                                         onChange={(e) => this.setState({ quantity: e.target.value })}
                                         className="form-input" type="number"
-                                        min={0} id="trading-quantity" step={100} />
+                                        min={100} id="trading-quantity" step={100} />
                                 </div>
                             </div>
                         </div>
@@ -66,8 +91,10 @@ export default class Trading extends React.Component<Props, object> {
                         <div className="form-group">
                             <div className="col-3" />
                             <div className="col-9">
-                                <button className="btn btn-primary" type="submit">买入</button>
-                                <button className="btn btn-primary" type="submit">卖出</button>
+                                <button
+                                    className="btn btn-primary" type="button"
+                                    onClick={this.onSubmitBuy}>买入</button>
+                                <button className="btn btn-primary" type="button">卖出</button>
                                 <button className="btn btn-link" type="reset">取消</button>
                             </div>
                         </div>

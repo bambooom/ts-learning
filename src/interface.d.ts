@@ -36,8 +36,11 @@ interface Transaction {
 // 订单
 interface Order {
     time: Date; // 订单时间
+    code: string; // 股票代码
+    name: string; // 股票名称
     orderPrice: number; // 订单价格
     orderQuantity: number; // 订单数量
+    direction: 'BUY' | 'SELL'; // 方向: 买入或者卖出
     status: 'CANCELED' | 'WAITING' | 'DEAL_DONE' | 'EXPIRED';
     dealedQuantity: number; // 已成交股数, 可能部分成交, 一定小于等于 orderQuantity
     dealedAvgPrice: number; // 以均价多少成交, 默认以最好价格成交

@@ -1,16 +1,5 @@
 import * as React from 'react';
 
-interface Order {
-    status: string;
-    direction: string;
-    code: string;
-    name: string;
-    orderPrice: number;
-    orderQuantity: number;
-    dealed: string;
-    orderTime: string;
-}
-
 export interface Props {
     orderList?: Order[];
 }
@@ -27,8 +16,7 @@ export default class OrderList extends React.Component<Props, object> {
                     <td>{order.name}</td>
                     <td>{order.orderPrice}</td>
                     <td>{order.orderQuantity}</td>
-                    <td>{order.dealed}</td>
-                    <td>{order.orderTime}</td>
+                    <td>{order.time}</td>
                 </tr>
             )) : [];
         return (
