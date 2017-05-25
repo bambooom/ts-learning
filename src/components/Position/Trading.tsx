@@ -27,7 +27,7 @@ export default class Trading extends React.Component<Props, object> {
         }
         const need = price * quantity;
         if (need > cash) {
-            showError('不够钱买呐! 减少数量或者降低价格或者再存点钱吧~');
+            showError('不够钱买呐! 减少数量或者降低价格吧~');
             return;
         }
 

@@ -12,8 +12,10 @@
     "@types/node": "^7.0.18",
     "@types/react": "^15.0.24",
     "@types/react-dom": "^15.5.0",
+    "@types/react-notification-system": "^0.2.34",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-notification-system": "^0.2.14",
     "spectre.css": "^0.2.14"
   },
   "scripts": {

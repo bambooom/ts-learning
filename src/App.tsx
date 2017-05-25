@@ -1,17 +1,19 @@
 /// <reference path="./interface.d.ts"/>
 
 import * as React from 'react';
+import * as NotificationSystem from 'react-notification-system';
+import notification from './components/notification';
 import AppBar from './components/AppBar';
 import Footer from './components/Footer';
 // import SearchBar from './components/SearchBar';
 import PriceBoard from './components/PriceBoard/index';
-import HoldingPos from './components/HoldingPos';
-import Trading from './components/Trading';
-import OrderList from './components/OrderList';
 // why cannot import from './components/PriceBoard' directly 
 // implicit import index.tsx file;
+import Position from './components/Position/index';
 
-const initDataURL = 'https://jsonbin.org/bambooom/ts-trading-demo-data';
+// const initDataURL = 'https://jsonbin.org/bambooom/ts-trading-demo-data';
+// backup 2: https://jsonblob.com/05710ed2-40f5-11e7-ae4c-390e75c055b2
+const initDataURL = 'https://api.myjson.com/bins/1bm2l9';
 
 interface StateData {
   // maby null or an init data from data.json
@@ -21,11 +23,15 @@ interface StateData {
 }
 
 class App extends React.Component<{}, object> {
+
   state: StateData = {
     data: null,
   };
 
+  private notificationSystem: NotificationSystem.System;
+
   componentDidMount() {
+    notification.init(this.notificationSystem);
     // fetch: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
     fetch(initDataURL)
       .then(res => res.json())
@@ -38,8 +44,18 @@ class App extends React.Component<{}, object> {
 
   render() {
     const { data } = this.state;
+    const notiStyle = {
+      ActionWrapper: {
+        DefaultStyle: {
+          textAlign: 'center',
+        }
+      }
+    };
     return (
       <div>
+        <NotificationSystem
+          ref={(ref: NotificationSystem.System) => this.notificationSystem = ref}
+          style={notiStyle} />
         <AppBar />
         <section className="container grid-960">
           <section className="columns content-container">
@@ -52,11 +68,9 @@ class App extends React.Component<{}, object> {
               />
             </div>
             <div className="column col-sm-12 col-6">
-              <HoldingPos
+              <Position
                 stockInfo={data ? data.stockInfo : {}}
                 asset={data ? data.asset : {}} />
-              <Trading />
-              <OrderList />
             </div>
           </section>
         </section>
