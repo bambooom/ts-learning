@@ -14,6 +14,7 @@ interface HoldingSecurity {
     name: string; // 股票名称
     quantity: number; // 持有股数
     avgCostPrice: number; // 成本价
+    lockedQuantity: number; // 卖出等待成交被锁定;
 }
 // 资产
 interface Asset {

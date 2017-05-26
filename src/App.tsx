@@ -12,7 +12,7 @@ import { matchOrder, updateAsset } from './util/handlers';
 
 // const initDataURL = 'https://jsonbin.org/bambooom/ts-trading-demo-data';
 // backup 2: https://jsonblob.com/05710ed2-40f5-11e7-ae4c-390e75c055b2
-const initDataURL = 'https://api.myjson.com/bins/10o6t1';
+const initDataURL = 'https://api.myjson.com/bins/1hfrz1';
 
 interface StateData {
   data: any; // tslint:disable-line

@@ -53,7 +53,8 @@ export default class Trading extends React.Component<Props, object> {
         }
         const { price, quantity, code } = this.state;
         const quantityHolding = this.props.asset.security[0].quantity;
-        if (quantity > quantityHolding) {
+        const locked = this.props.asset.security[0].lockedQuantity;
+        if (quantity > quantityHolding - locked) {
             showError('你持有的股数不够呐!');
             return;
         }

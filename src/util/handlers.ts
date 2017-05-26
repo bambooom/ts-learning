@@ -90,11 +90,11 @@ function updateAsset(order: Order, asset: Asset) {
         const cost = calulateCost(dealed);
         const dealedQ = calulateQuantity(dealed);
         const pCost = asset.security[0].quantity * asset.security[0].avgCostPrice;
+        const quantityLeft = order.orderQuantity - dealedQ;
         if (isBuy) {
             asset.cash -= cost;
             asset.security[0].quantity += dealedQ;
             asset.security[0].avgCostPrice = (pCost + cost) / asset.security[0].quantity;
-            const quantityLeft = order.orderQuantity - dealedQ;
             if (quantityLeft > 0) {
                 asset.locked = quantityLeft * order.orderPrice;
                 asset.cash -= asset.locked;
@@ -107,12 +107,17 @@ function updateAsset(order: Order, asset: Asset) {
             } else {
                 asset.security[0].avgCostPrice = (pCost - cost) / asset.security[0].quantity;
             }
+            if (quantityLeft > 0) {
+                asset.security[0].lockedQuantity = quantityLeft;
+            }
 
         }
     } else {
         if (isBuy) {
             asset.locked = order.orderPrice * order.orderQuantity;
             asset.cash -= asset.locked;
+        } else {
+            asset.security[0].lockedQuantity = order.orderQuantity;
         }
     }
 
