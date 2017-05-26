@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { showError } from '../notification';
+import { orderConstructor } from '../../util/util';
 
 export interface Props {
     asset: Asset;
@@ -40,7 +41,8 @@ export default class Trading extends React.Component<Props, object> {
             showError('不够钱买呐! 减少数量或者降低价格吧~');
             return;
         }
-        this.props.onTrading({ price, quantity, direction: 'BUY', code, time: new Date() });
+        const order = orderConstructor(price, quantity, code, 'BUY');
+        this.props.onTrading(order);
     }
 
     onSubmitSell = () => {
@@ -55,7 +57,8 @@ export default class Trading extends React.Component<Props, object> {
             showError('你持有的股数不够呐!');
             return;
         }
-        this.props.onTrading({ price, quantity, direction: 'SELL', code, time: new Date() });
+        const order = orderConstructor(price, quantity, code, 'SELL');
+        this.props.onTrading(order);
     }
 
     render() {

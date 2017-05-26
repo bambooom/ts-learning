@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { calulateQuantity, calulateAvgPrice } from '../../util/util';
 
 export interface Props {
     orderList?: Order[];
@@ -28,7 +29,7 @@ export default class OrderList extends React.Component<Props, object> {
                     <td>{order.name}</td>
                     <td>{order.orderPrice}</td>
                     <td>{order.orderQuantity}</td>
-                    <td>{`${order.dealedQuantity}@${order.dealedAvgPrice.toFixed(2)}`}</td>
+                    <td>{`${calulateQuantity(order.dealed)}@${calulateAvgPrice(order.dealed).toFixed(2)}`}</td>
                     <td>{order.time.toLocaleTimeString()}</td>
                 </tr>
             )) : [];

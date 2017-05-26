@@ -2,6 +2,8 @@
  * Created by zhuzi on Wed May 24 2017
  */
 
+import { v4 as uuid } from 'uuid';
+
 // check if a time is a trading time
 function isTradingTime(now: Date): boolean {
     const day: number = now.getDay();
@@ -9,7 +11,7 @@ function isTradingTime(now: Date): boolean {
         return false;
     }
     const hour: number = now.getHours();
-    if (hour < 9 || hour > 16 || hour === 12) {
+    if (hour < 9 || hour >= 16 || hour === 12) {
         return false;
     }
     return true;
@@ -51,4 +53,34 @@ function calulateAvgPrice(deals: Transaction[]): number {
     return totalCost / totalQuantity;
 }
 
-export { isTradingTime, lastTradingTime, calulateCost, calulateAvgPrice, calulateQuantity };
+function orderConstructor(
+    p: number,
+    q: number,
+    code: string,
+    direction: 'BUY' | 'SELL'): Order {
+    return {
+        orderId: uuid(),
+        time: new Date(),
+        code,
+        name: '腾讯控股',
+        orderPrice: p,
+        orderQuantity: q,
+        direction: direction,
+        status: 'WAITING',
+        dealed: [],
+    };
+}
+
+function dealConstructor(p: number, q: number): Transaction {
+    return {
+        time: new Date(),
+        dealPrice: p,
+        dealQuantity: q
+    };
+}
+
+export {
+    isTradingTime, lastTradingTime, calulateCost,
+    calulateAvgPrice, calulateQuantity,
+    orderConstructor, dealConstructor
+};

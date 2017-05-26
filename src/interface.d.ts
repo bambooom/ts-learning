@@ -45,21 +45,22 @@ interface Order {
     orderQuantity: number; // 订单数量
     direction: 'BUY' | 'SELL'; // 方向: 买入或者卖出
     status: 'CANCELED' | 'WAITING' | 'DEAL_DONE' | 'EXPIRED';
-    dealedQuantity: number; // 已成交股数, 可能部分成交, 一定小于等于 orderQuantity
-    dealedAvgPrice: number; // 以均价多少成交, 默认以最好价格成交
+    dealed: Transaction[];
+    // dealedQuantity: number; // 已成交股数, 可能部分成交, 一定小于等于 orderQuantity
+    // dealedAvgPrice: number; // 以均价多少成交, 默认以最好价格成交
     onCancel?: (id: orderId) => void;
 }
-interface TradingOpt {
-    time: Date;
-    code: string;
-    name?: string;
-    price: number;
-    quantity: number;
-    direction: 'BUY' | 'SELL';
-}
+// interface TradingOpt {
+//     time: Date;
+//     code: string;
+//     name?: string;
+//     price: number;
+//     quantity: number;
+//     direction: 'BUY' | 'SELL';
+// }
 // 交易
 interface OnTrading {
-    (arg: TradingOpt): void
+    (order: Order): void
 }
 // 成交
 // interface Deal {

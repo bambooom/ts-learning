@@ -57,7 +57,7 @@ export default class AssetSum extends React.Component<Props, object> {
                     <td>{stock.code}</td>
                     <td>{stock.name}</td>
                     <td>{stock.quantity}</td>
-                    <td>{stock.avgCostPrice}</td>
+                    <td>{stock.avgCostPrice.toFixed(2)}</td>
                     <td>{profitAndLossNum.toFixed(2)}</td>
                     <td>{`${(profitAndLossPct * 100).toFixed(2)} %`}</td>
                     <td>{marketValue.toFixed(2)}</td>
