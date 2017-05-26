@@ -16,6 +16,7 @@ export default class AssetSum extends React.Component<Props, object> {
     renderCapitalSection() {
         const { asset, stockInfo } = this.props;
         const cash = asset.cash ? asset.cash : 0;
+        const locked = asset.locked ? asset.locked : 0;
         const securityInTotal = sumSecuritiesMarketValue(asset.security, stockInfo.current);
         const totalAsset = cash + securityInTotal;
         return (
@@ -35,7 +36,7 @@ export default class AssetSum extends React.Component<Props, object> {
                             现金: {cash.toFixed(2)}
                         </div>
                         <div className="column col-6">
-                            冻结金额: 0
+                            冻结金额: {locked.toFixed(2)}
                         </div>
                     </div>
                 </div>

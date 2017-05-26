@@ -19,6 +19,7 @@ interface HoldingSecurity {
 interface Asset {
     cash: number; // 现金
     security: HoldingSecurity[]; // 持仓股票
+    locked: number; // 被锁定的 cash, 买入下单未完成时占用的钱
 }
 // 买盘或卖盘某一报价
 // -> 此处意为有几家券商/经纪一共多少手在此价位报价排队等待成交, 其中有先后次序, 先到先得
@@ -33,8 +34,10 @@ interface Transaction {
     dealPrice: number; // 成交价格
     dealQuantity: number; // 成交数量
 }
+type orderId = string;
 // 订单
 interface Order {
+    orderId: string; // 订单 id
     time: Date; // 订单时间
     code: string; // 股票代码
     name: string; // 股票名称
@@ -44,4 +47,21 @@ interface Order {
     status: 'CANCELED' | 'WAITING' | 'DEAL_DONE' | 'EXPIRED';
     dealedQuantity: number; // 已成交股数, 可能部分成交, 一定小于等于 orderQuantity
     dealedAvgPrice: number; // 以均价多少成交, 默认以最好价格成交
+    onCancel?: (id: orderId) => void;
 }
+interface TradingOpt {
+    time: Date;
+    code: string;
+    name?: string;
+    price: number;
+    quantity: number;
+    direction: 'BUY' | 'SELL';
+}
+// 交易
+interface OnTrading {
+    (arg: TradingOpt): void
+}
+// 成交
+// interface Deal {
+//     quantity
+// }

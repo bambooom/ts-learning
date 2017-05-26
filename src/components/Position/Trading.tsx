@@ -4,11 +4,12 @@ import { showError } from '../notification';
 export interface Props {
     asset: Asset;
     stockInfo: StockBaseInfo;
+    onTrading: OnTrading;
 }
 
 export default class Trading extends React.Component<Props, object> {
     state = {
-        code: null,
+        code: '',
         price: 0,
         quantity: 0,
     };
@@ -32,13 +33,14 @@ export default class Trading extends React.Component<Props, object> {
             showError(invalidInput);
             return;
         }
-        const { price, quantity } = this.state;
+        const { price, quantity, code } = this.state;
         const { cash } = this.props.asset;
         const need = price * quantity;
         if (need > cash) {
             showError('不够钱买呐! 减少数量或者降低价格吧~');
             return;
         }
+        this.props.onTrading({ price, quantity, direction: 'BUY', code, time: new Date() });
     }
 
     onSubmitSell = () => {
@@ -47,12 +49,13 @@ export default class Trading extends React.Component<Props, object> {
             showError(invalidInput);
             return;
         }
-        const { quantity } = this.state;
+        const { price, quantity, code } = this.state;
         const quantityHolding = this.props.asset.security[0].quantity;
         if (quantity > quantityHolding) {
             showError('你持有的股数不够呐!');
             return;
         }
+        this.props.onTrading({ price, quantity, direction: 'SELL', code, time: new Date() });
     }
 
     render() {
@@ -74,7 +77,7 @@ export default class Trading extends React.Component<Props, object> {
                                 <select className="form-select" id="stock-code"
                                     onChange={(e) => this.setState({ code: e.target.value })}>
                                     <option>选择股票代码</option>
-                                    <option value="700">00700.HK 腾讯控股</option>
+                                    <option value="00700.HK">00700.HK 腾讯控股</option>
                                 </select>
                             </div>
                         </div>
@@ -84,7 +87,7 @@ export default class Trading extends React.Component<Props, object> {
                             </div>
                             <div className="col-9">
                                 <input
-                                    onChange={(e) => this.setState({ price: e.target.value })}
+                                    onChange={(e) => this.setState({ price: parseFloat(e.target.value) })}
                                     className="form-input" type="number"
                                     id="trading-price" step={0.2} min={0} />
                             </div>
@@ -96,7 +99,7 @@ export default class Trading extends React.Component<Props, object> {
                             <div className="col-9">
                                 <div className="input-group">
                                     <input
-                                        onChange={(e) => this.setState({ quantity: e.target.value })}
+                                        onChange={(e) => this.setState({ quantity: parseFloat(e.target.value) })}
                                         className="form-input" type="number"
                                         min={100} id="trading-quantity" step={100} />
                                 </div>

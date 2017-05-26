@@ -37,4 +37,18 @@ function lastTradingTime(now: Date): Date {
     return result;
 }
 
-export { isTradingTime, lastTradingTime };
+function calulateCost(deals: Transaction[]): number {
+    return deals.reduce((acc, cv) => acc + cv.dealPrice * cv.dealQuantity, 0);
+}
+
+function calulateQuantity(deals: Transaction[]): number {
+    return deals.reduce((acc, cv) => acc + cv.dealQuantity, 0);
+}
+
+function calulateAvgPrice(deals: Transaction[]): number {
+    const totalCost = calulateCost(deals);
+    const totalQuantity = calulateQuantity(deals);
+    return totalCost / totalQuantity;
+}
+
+export { isTradingTime, lastTradingTime, calulateCost, calulateAvgPrice, calulateQuantity };

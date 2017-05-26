@@ -5,18 +5,31 @@ export interface Props {
 }
 
 export default class OrderList extends React.Component<Props, object> {
+    readonly ORDER_STATUS = {
+        'WAITING': '等待成交',
+        'DEAL_DONE': '已完成',
+        'CANCELED': '已取消',
+        'EXPIRED': '已过期'
+    };
+
+    readonly DIRECTION = {
+        'BUY': '买入',
+        'SELL': '卖出',
+    };
+
     render() {
         const { orderList } = this.props;
         const rows = orderList && orderList.length > 0 ?
             orderList.map(order => (
-                <tr key={Math.random()}>
-                    <td>{order.status}</td>
-                    <td>{order.direction}</td>
+                <tr key={order.orderId}>
+                    <td>{this.ORDER_STATUS[order.status]}</td>
+                    <td>{this.DIRECTION[order.direction]}</td>
                     <td>{order.code}</td>
                     <td>{order.name}</td>
                     <td>{order.orderPrice}</td>
                     <td>{order.orderQuantity}</td>
-                    <td>{order.time}</td>
+                    <td>{`${order.dealedQuantity}@${order.dealedAvgPrice.toFixed(2)}`}</td>
+                    <td>{order.time.toLocaleTimeString()}</td>
                 </tr>
             )) : [];
         return (
