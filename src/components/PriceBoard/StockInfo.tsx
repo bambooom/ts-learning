@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isTradingTime } from '../../util';
+import { isTradingTime } from '../../util/util';
 
 export default class StockInfo extends React.Component<StockBaseInfo, object> {
     render() {

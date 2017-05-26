@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { lastTradingTime } from '../../util';
+import { lastTradingTime } from '../../util/util';
 
 export interface Props {
     transactionRecord: Transaction[];

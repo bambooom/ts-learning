@@ -12,7 +12,7 @@ import PriceBoard from './components/PriceBoard/index';
 // implicit import index.tsx file;
 import Position from './components/Position/index';
 // import { showSuccess, showError } from './components/notification';
-import { calulateAvgPrice, calulateCost, calulateQuantity } from './util';
+import { calulateAvgPrice, calulateCost, calulateQuantity } from './util/util';
 
 // const initDataURL = 'https://jsonbin.org/bambooom/ts-trading-demo-data';
 // backup 2: https://jsonblob.com/05710ed2-40f5-11e7-ae4c-390e75c055b2
